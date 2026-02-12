@@ -13,21 +13,32 @@ import com.intellij.util.messages.Topic
 class PluginSettings : PersistentStateComponent<PluginSettings.State> {
 
     data class State(
+        // ── 1. General ──
         var enabled: Boolean = true,
-        var verticalGuideEnabled: Boolean = true,
-        var horizontalGuideEnabled: Boolean = true,
         var displayMode: DisplayMode = DisplayMode.ALL,
-        var lineWidth: Float = 0.7f,
-        var activeLineWidth: Float = 1.0f,
-        var activeLineStyle: LineStyle = LineStyle.SOLID,
-        var inactiveOpacity: Float = 0.15f,
 
+        // ── 2. Color Preset ──
         var depthColors: MutableList<String> = mutableListOf(
             "#FFD700", "#DA70D6", "#179FFF",
             "#00CC7A", "#FF6B6B", "#CC8833"
         ),
         var cycleColors: Boolean = true,
 
+        // ── 3. Guide Lines ──
+        var verticalGuideEnabled: Boolean = true,
+        var horizontalGuideEnabled: Boolean = true,
+        var lineWidth: Float = 0.7f,
+        var activeLineWidth: Float = 1.0f,
+        var activeLineStyle: LineStyle = LineStyle.SOLID,
+        var inactiveOpacity: Float = 0.15f,
+
+        // ── 4. Bracket Highlight ──
+        var bracketForegroundColor: String = "",
+        var bracketBackgroundEnabled: Boolean = true,
+        var bracketBackgroundColor: String = "",
+        var bracketBackgroundOpacity: Float = 0.25f,
+
+        // ── 5. Advanced ──
         var caretDebounceMs: Int = 50,
         var maxNestingDepth: Int = 30
     )
