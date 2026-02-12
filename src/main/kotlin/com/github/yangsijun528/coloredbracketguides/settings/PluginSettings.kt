@@ -16,11 +16,11 @@ class PluginSettings : PersistentStateComponent<PluginSettings.State> {
         var enabled: Boolean = true,
         var verticalGuideEnabled: Boolean = true,
         var horizontalGuideEnabled: Boolean = true,
-        var displayMode: DisplayMode = DisplayMode.ACTIVE_ONLY,
-        var lineWidth: Int = 1,
-        var activeLineWidth: Int = 2,
+        var displayMode: DisplayMode = DisplayMode.ALL,
+        var lineWidth: Float = 0.7f,
+        var activeLineWidth: Float = 1.0f,
         var activeLineStyle: LineStyle = LineStyle.SOLID,
-        var inactiveOpacity: Float = 0.3f,
+        var inactiveOpacity: Float = 0.15f,
 
         var depthColors: MutableList<String> = mutableListOf(
             "#FFD700", "#DA70D6", "#179FFF",

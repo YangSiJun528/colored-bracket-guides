@@ -23,7 +23,7 @@ object ColorUtil {
         return Color(color.red, color.green, color.blue, alpha)
     }
 
-    fun parseHexColor(hex: String): Color {
+    private fun parseHexColor(hex: String): Color {
         val cleaned = hex.removePrefix("#")
         return try {
             Color(cleaned.toInt(16))
