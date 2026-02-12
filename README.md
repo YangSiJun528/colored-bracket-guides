@@ -18,11 +18,14 @@
 - [ ] Configure the [CODECOV_TOKEN](https://docs.codecov.com/docs/quick-start) secret for automated test coverage reports on PRs
 
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+**Colored Bracket Guides** renders colored vertical and horizontal bracket guide lines in the editor.
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
+- **Vertical guide lines** from opening to closing brackets, colored by nesting depth (6-color cycle)
+- **Horizontal guide lines** connecting brackets to their indent guide
+- **Active scope highlighting** — the bracket scope at the cursor is emphasized
+- Works with all languages that have a `BraceMatcher` registered (Java, Kotlin, JS, TS, Python, Go, Rust, C/C++, etc.)
+- Fully configurable colors, line styles, and display modes
 
-To keep everything working, do not remove `<!-- ... -->` sections. 
 <!-- Plugin description end -->
 
 ## Installation
