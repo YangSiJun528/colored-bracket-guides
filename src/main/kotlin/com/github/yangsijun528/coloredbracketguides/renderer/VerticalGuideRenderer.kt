@@ -51,15 +51,22 @@ object VerticalGuideRenderer {
 
         val x = guideInfo.gcX
 
-        // Vertical line must NOT touch the bracket lines.
-        // Starts at OB next line top, ends at CB line top.
+        // Vertical line spans:
+        //   - Always starts from openLine+1 top (just below the OB line)
+        //   - If GC matches the closing bracket character position: to CB line top (no line needed on CB line)
+        //   - Otherwise: to CB line bottom (vertical line runs through CB line, connects to └ if needed)
         val yStart: Int
         val yEnd: Int
 
         if (pair.openLine + 1 <= pair.closeLine) {
-            val nextLineAfterOb = pair.openLine + 1
-            yStart = editor.offsetToXY(document.getLineStartOffset(nextLineAfterOb)).y
-            yEnd = editor.offsetToXY(document.getLineStartOffset(pair.closeLine)).y
+            val cbLineY = editor.offsetToXY(document.getLineStartOffset(pair.closeLine)).y
+
+            yStart = editor.offsetToXY(document.getLineStartOffset(pair.openLine + 1)).y
+            yEnd = if (guideInfo.gcMatchesCbChar) {
+                cbLineY  // GC is at the closing bracket — no vertical line needed on CB line
+            } else {
+                cbLineY + editor.lineHeight  // vertical line extends through CB line
+            }
         } else {
             return
         }
